@@ -6,7 +6,7 @@ FROM ${BASE_IMAGE} AS base
 
 # Build arguments for this stage with sensible defaults for standalone builds
 ARG COMFYUI_VERSION=latest
-ARG CUDA_VERSION_FOR_COMFY=12.8
+ARG CUDA_VERSION_FOR_COMFY=128
 
 
 # Architecture for RTX 4090 / L40 / RTX 6000 Ada (SM89)
