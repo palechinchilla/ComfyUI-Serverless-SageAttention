@@ -6,7 +6,7 @@ FROM ${BASE_IMAGE} AS base
 
 # Build arguments for this stage with sensible defaults for standalone builds
 ARG COMFYUI_VERSION=latest
-ARG CUDA_VERSION_FOR_COMFY=128
+ARG CUDA_VERSION_FOR_COMFY
 
 
 # Architecture for RTX 4090 / L40 / RTX 6000 Ada (SM89)
@@ -68,7 +68,7 @@ RUN if [ -n "${CUDA_VERSION_FOR_COMFY}" ]; then \
     else \
       /usr/bin/yes | comfy --workspace /comfyui install --version "${COMFYUI_VERSION}" --nvidia; \
     fi
-
+	
 # Completely remove any PyTorch/Triton installed by ComfyUI (to avoid version conflicts)
 RUN uv pip uninstall -y torch torchvision torchaudio triton pytorch-triton torchao || true
 
